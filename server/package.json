@@ -1,8 +1,9 @@
 {
-  "name": "nest-admin",
+  "name": "nest-boilerplate",
   "version": "0.0.1",
   "description": "",
-  "author": "",
+  "author": "alexander wang",
+  "email": "cookiy8511@gmail.com",
   "private": true,
   "license": "UNLICENSED",
   "scripts": {

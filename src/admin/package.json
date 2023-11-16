@@ -1,0 +1,124 @@
+{
+	"name": "admin ui",
+	"version": "1.0.3",
+	"scripts": {
+		"dev": "vite --mode development",
+		"qa": "vite build --mode qa",
+		"build": "vite build --mode production",
+		"tscbuild": "tsc && vite build",
+		"serve": "vite preview",
+		"changelog": "conventional-changelog -p angular -i CHANGELOG.md -s -r 0",
+		"test": "jest --passWithNoTests",
+		"lint": "eslint --ext .tsx src  --fix"
+	},
+	"config": {
+		"commitizen": {
+			"path": "cz-conventional-changelog"
+		}
+	},
+	"husky": {
+		"hooks": {
+			"pre-commit": "lint-staged"
+		}
+	},
+	"lint-staged": {
+		"src/**/*.{ts,tsx}": [
+			"eslint --cache --fix",
+			"git add"
+		],
+		"src/**/*.{js,jsx}": [
+			"eslint --cache --fix",
+			"git add"
+		],
+		"*.{js,css,json,md,ts,tsx}": [
+			"prettier --write",
+			"git add"
+		]
+	},
+	"dependencies": {
+		"@ant-design/icons": "^4.6.2",
+		"@fortawesome/fontawesome-svg-core": "^6.1.1",
+		"@fortawesome/free-regular-svg-icons": "^6.0.0",
+		"@fortawesome/free-solid-svg-icons": "^6.0.0",
+		"@fortawesome/react-fontawesome": "^0.1.17",
+		"ahooks": "^3.1.9",
+		"antd": "^5.8.0",
+		"axios": "^0.21.1",
+		"classnames": "^2.2.6",
+		"dayjs": "^1.10.7",
+		"file-saver": "^2.0.5",
+		"flatted": "^3.2.5",
+		"immer": "^9.0.12",
+		"immutability-helper": "^3.1.1",
+		"lodash": "^4.17.21",
+		"lodash.get": "^4.4.2",
+		"lodash.isequal": "^4.5.0",
+		"mockjs": "^1.0.1-beta3",
+		"prismjs": "^1.27.0",
+		"quill": "^1.3.7",
+		"react": "^18.1.0",
+		"react-copy-to-clipboard": "^5.0.4",
+		"react-custom-scrollbars": "^4.2.1",
+		"react-dom": "^18.1.0",
+		"react-json-pretty": "^2.2.0",
+		"react-router-dom": "^5.2.0",
+		"riot-tmpl": "^3.0.8",
+		"zustand": "^3.6.4",
+		"zustand-persist": "^0.4.0"
+	},
+	"devDependencies": {
+		"@babel/core": "^7.17.5",
+		"@babel/plugin-transform-runtime": "^7.17.0",
+		"@babel/preset-env": "^7.16.11",
+		"@babel/preset-react": "^7.16.7",
+		"@babel/preset-typescript": "^7.16.7",
+		"@commitlint/cli": "^14.1.0",
+		"@commitlint/config-conventional": "^14.1.0",
+		"@testing-library/dom": "^8.2.0",
+		"@testing-library/jest-dom": "^5.16.2",
+		"@testing-library/react": "^12.1.3",
+		"@testing-library/react-hooks": "^7.0.1",
+		"@testing-library/user-event": "^14.1.1",
+		"@types/dateformat": "^3.0.1",
+		"@types/jest": "^27.0.1",
+		"@types/lodash": "^4.14.182",
+		"@types/node": "^15.14.9",
+		"@types/react": "^17.0.39",
+		"@types/react-custom-scrollbars": "^4.0.10",
+		"@types/react-dom": "^18.0.5",
+		"@types/react-json-editor-ajrm": "^2.5.2",
+		"@types/react-router-dom": "^5.1.7",
+		"@typescript-eslint/eslint-plugin": "^4.33.0",
+		"@typescript-eslint/parser": "^4.33.0",
+		"@vitejs/plugin-react-refresh": "^1.3.6",
+		"autoprefixer": "^10.4.2",
+		"babel-jest": "^27.5.1",
+		"babel-plugin-component": "^1.1.1",
+		"babel-preset-env": "^1.7.0",
+		"babel-preset-react": "^6.24.1",
+		"commitizen": "^4.2.4",
+		"conventional-changelog-cli": "^2.1.1",
+		"cz-conventional-changelog": "^3.3.0",
+		"eslint": "^7.32.0",
+		"eslint-config-prettier": "^7.2.0",
+		"eslint-plugin-jest": "^26.1.1",
+		"eslint-plugin-prettier": "^3.4.1",
+		"eslint-plugin-react": "^7.28.0",
+		"eslint-plugin-react-hooks": "^4.3.0",
+		"husky": "4.3.8",
+		"jest": "^27.5.1",
+		"jest-image-snapshot": "^2.12.0",
+		"jest-junit": "^13.1.0",
+		"less": "^4.1.2",
+		"lint-staged": "^10.5.4",
+		"moment": "^2.29.3",
+		"nanoid": "^3.2.0",
+		"postcss": "^8.4.6",
+		"prettier": "^2.5.1",
+		"react-test-renderer": "^17.0.2",
+		"typescript": "^4.5.5",
+		"vite": "^2.8.6",
+		"vite-plugin-commonjs": "^0.2.6",
+		"vite-plugin-svgr": "^0.2.0"
+	}
+}

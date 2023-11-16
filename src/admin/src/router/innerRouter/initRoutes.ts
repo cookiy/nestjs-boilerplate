@@ -1,12 +1,11 @@
 import { IPermission } from '@/model/common'
 import IRoute from './IRoute'
 import dashboardRoute from './modules/dashboard'
-import microRoute from './modules/micro'
 import adminRoute from './modules/admin'
 import categoryRoute from './modules/category'
 import linkRoute from './modules/link'
 
-const routeMap = [dashboardRoute, categoryRoute, microRoute, adminRoute, linkRoute]
+const routeMap = [dashboardRoute, categoryRoute, adminRoute, linkRoute]
 
 // 根据路由名称获取可访问的路由表
 const filterRouteMap = (routeNames: string[], routeMap: IRoute[]) => {

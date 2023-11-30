@@ -1,7 +1,6 @@
+import { Column } from 'typeorm';
 
-import { Column } from "typeorm"
-
-export abstract class Base{
+export abstract class Base {
   @Column({ type: 'timestamp', default: () => 'CURRENT_TIMESTAMP' })
   createdAt: Date;
 

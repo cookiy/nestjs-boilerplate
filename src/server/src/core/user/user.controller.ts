@@ -43,7 +43,7 @@ export class UserController {
   async findAll() {
     return this.userService.findAll();
   }
-	@Get('info')
+  @Get('info')
   async getUserInfo(@Request() request) {
     const { id, uId, username, email, is_admin } = request.user;
     const accountInfo = {
@@ -51,12 +51,12 @@ export class UserController {
       uid: uId,
       username,
       email,
-      is_admin
-    }
+      is_admin,
+    };
     return {
       accountInfo,
       permission: is_admin === 1 ? adminPermissions : basePermissions,
-    }
+    };
   }
 
   @ApiResponse({ type: User })

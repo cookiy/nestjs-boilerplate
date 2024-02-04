@@ -10,9 +10,9 @@ const UploadContainer = () => {
   const [form] = Form.useForm();
   const [filePath, setFilePath] = useState('');
   const [fileName, setFileName] = useState('');
-  
+
   const compress = async (values) => {
-    const res = await axios.get('http://localhost:3005/compression', {
+    const res = await axios.get('http://localhost:8899/api/upload/compression', {
       params: {
         color: values.color || 256,
         level: values.level || 9,
@@ -34,7 +34,7 @@ const UploadContainer = () => {
 
   const props = {
     name: 'file',
-    action: 'http://localhost:3005/upload',
+    action: 'http://localhost:8899/api/upload/files',
     onChange(info) {
       const { status } = info.file;
       if (status === 'done') {
@@ -51,6 +51,7 @@ const UploadContainer = () => {
     <section id="contact" className="overflow-hidden py-16 md:py-20 lg:py-28">
       <div className="container">
         <div className="-mx-4 flex flex-wrap">
+          <button className="bg-red-700 font-semibold text-white py-2 px-4 rounded hover:bg-red-700 duration-1000">前端晚间课</button>
           <div className="w-full px-4 lg:w-7/12 xl:w-8/12">
             <div
               className="wow fadeInUp mb-12 rounded-md bg-primary/[3%] py-11 px-8 dark:bg-dark sm:p-[55px] lg:mb-5 lg:px-8 xl:p-[55px]"
@@ -61,6 +62,13 @@ const UploadContainer = () => {
                 <Form.Item
                   label="颜色数量"
                   name="color"
+                >
+                  <Input />
+                </Form.Item>
+
+                <Form.Item
+                  label="level"
+                  name="level"
                 >
                   <Input />
                 </Form.Item>

@@ -11,6 +11,9 @@
     "skipLibCheck": true,
     "outDir": "./dist",
     "baseUrl": "./",
+    "paths": {
+      "@/*": ["src/*"]
+    },
     "incremental": true,
     "typeRoots": [
       "node_modules/@types"

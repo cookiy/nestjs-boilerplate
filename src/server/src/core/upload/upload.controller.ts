@@ -2,40 +2,59 @@ import {
   BadRequestException,
   Controller,
   Get,
-  Post,
-  Res,
-  Query,
   ParseIntPipe,
+  Post,
+  Query,
+  Res,
   UploadedFile,
-  UploadedFiles,
   UseInterceptors,
 } from '@nestjs/common';
 import { FileInterceptor } from '@nestjs/platform-express';
-import { Express } from 'express';
+import { Response } from 'express';
+import { existsSync } from 'fs';
+import * as sharp from 'sharp';
+import { UploadService } from './upload.service';
 import { ApiTags } from '@nestjs/swagger';
-import { staticBaseUrl } from './constants';
-import { SkipJwtAuth } from '../../core/auth/constants';
-@ApiTags('文件上传')
-// @ApiBearerAuth()
+import { SkipJwtAuth } from '@/core/auth/constants';
+@ApiTags('upload')
 @SkipJwtAuth()
 @Controller('upload')
 export class UploadController {
+  constructor(private readonly uploadService: UploadService) {}
+
+  @Post('files')
   @UseInterceptors(
     FileInterceptor('file', {
       dest: 'uploads',
     }),
   )
   uploadFile(@UploadedFile() file: Express.Multer.File) {
-     return {
-       file: staticBaseUrl + file.originalname,
-     };
+    console.log('file', file);
+    return file.path;
   }
 
-  @Post('files')
-  @UseInterceptors(FileInterceptor('files'))
-  uploadFiles(@UploadedFiles() files: Array<Express.Multer.File>) {
-    return {
-      files: files.map((f) => staticBaseUrl + f.originalname),
-    };
+  @Get('compression')
+  async compression(
+    @Query('path') filePath: string,
+    @Query('color', ParseIntPipe) color: number,
+    @Res() res: Response,
+  ) {
+    console.log('filePath', filePath);
+    if (!existsSync(filePath)) {
+      throw new BadRequestException('文件不存在');
+    }
+
+    const data = await sharp(filePath, {
+      animated: true,
+      limitInputPixels: false,
+    })
+      .gif({
+        colours: color,
+      })
+      .toBuffer();
+
+    res.set('Content-Disposition', `attachment; filename="dest.gif"`);
+
+    res.send(data);
   }
 }

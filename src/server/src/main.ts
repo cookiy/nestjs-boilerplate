@@ -31,7 +31,7 @@ async function bootstrap() {
   const reportLogger = new ReportLogger();
   const app = await NestFactory.create<NestExpressApplication>(AppModule, {
     cors: {
-      origin: ['http://localhost', 'http://localhost:3008'],
+      origin: '*',
       credentials: true,
     },
     bufferLogs: true,
